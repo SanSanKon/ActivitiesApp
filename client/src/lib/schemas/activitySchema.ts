@@ -1,13 +1,5 @@
 import {z} from 'zod';
-
-const requiredString = (fieldName: string) => 
-    z.preprocess(
-        (val) => (val === undefined || val === null ? '' : val),
-        z.string().nonempty({message: `${fieldName} is required`})
-    );
-    
-    // .string({required_error: `${fieldName} is required`})
-    // .min(1, {message: `${fieldName} is required`});
+import { requiredString } from '../util/util';
 
 export const activitySchema = z.object({
     title: requiredString('Title'),
